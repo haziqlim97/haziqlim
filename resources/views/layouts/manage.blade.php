@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+    Catering App
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -19,71 +19,39 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <!-- <link href="paper-dashboard/assets/demo/demo.css" rel="stylesheet" /> -->
 </head>
-<body>
-    <body class="">
-        <div class="wrapper ">
-
-            @include('manage.sidebar')
+<body class="">
+    <div class="wrapper ">
+        @include('manage.sidebar')
             
-            <div class="main-panel">
-
-                @include('manage.navbar')
-
-                <div class="content">
-                    @yield('content')
-                </div>
+        <div class="main-panel">
+            @include('manage.navbar')
+            <div class="content">
+                @yield('content')
             </div>
-
-
-      <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li>
-                  <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                </li>
-                <li>
-                  <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                </li>
-                <li>
-                  <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                </li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-              <span class="copyright">
-                ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-            </div>
-          </div>
         </div>
-      </footer>
-        </div>
-  <!--   Core JS Files   -->
-  <script src="{{ asset('paper-dashboard/assets/js/core/jquery.min.js')}}"></script>
-  <script src="{{ asset('paper-dashboard/assets/js/core/popper.min.js')}}"></script>
-  <script src="{{ asset('paper-dashboard/assets/js/core/bootstrap.min.js')}}"></script>
-  <script src="{{ asset('paper-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="{{ asset('paper-dashboard/assets/js/plugins/chartjs.min.js')}}"></script>
-  <!--  Notifications Plugin    -->
-  <script src="{{ asset('paper-dashboard/assets/js/plugins/bootstrap-notify.js')}}"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('paper-dashboard/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript')}}"></script>
-  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <!--  <script src="{{ asset('paper-dashboard/assets/demo/demo.js')}}"></script> -->
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-  </script>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="{{ asset('paper-dashboard/assets/js/core/jquery.min.js')}}"></script>
+    <script src="{{ asset('paper-dashboard/assets/js/core/popper.min.js')}}"></script>
+    <script src="{{ asset('paper-dashboard/assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('paper-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+    <!--  Google Maps Plugin    -->
+    <!--  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>    -->
+    <!-- Chart JS -->
+    <script src="{{ asset('paper-dashboard/assets/js/plugins/chartjs.min.js')}}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('paper-dashboard/assets/js/plugins/bootstrap-notify.js')}}"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{ asset('paper-dashboard/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript')}}"></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <!--  <script src="{{ asset('paper-dashboard/assets/demo/demo.js')}}"></script> -->
+    <script>
+        $(document).ready(function() {
+        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+        demo.initChartsPages();
+        });
+    </script>
 </body>
 
 </html>
