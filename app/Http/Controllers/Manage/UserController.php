@@ -120,16 +120,9 @@ class UserController extends Controller
         $roles = Role::all();
         $user = User::findOrFail($id);
 
-        $meta = [
-            'title' => 'Edit Post',
-            'keyword' => 'dasboard',
-            'description' => 'dasboard',
-        ];
-
         return view('manage.users.edit')
             ->withUser($user)
-            ->withRoles($roles)
-            ->withMeta($meta);
+            ->withRoles($roles);
     }
 
     /**

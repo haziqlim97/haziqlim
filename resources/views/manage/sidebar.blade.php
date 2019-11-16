@@ -27,7 +27,7 @@
             @permission('read-customer')
             <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
                 <a href="{{ route('customer:index') }}">
-                    <i class="nc-icon nc-single-02"></i>
+                    <i class="nc-icon nc-circle-10"></i>
                     <p>Customers</p>
                 </a>
             </li>

@@ -40,8 +40,8 @@
                                                 {{ $role->display_name }}
                                             @endforeach
                                         </td>
-                                        <td class="text-right">        
-                                            <button type="submit" class="btn btn-primary btn-round">view</button>
+                                        <td class="text-right">
+                                            <a href="{{ route('user:show', $user->id) }}"  class="btn btn-primary btn-round">view</a>
                                             <button type="submit" class="btn btn-success btn-round">edit</button>
                                         </td>
                                     </tr>
