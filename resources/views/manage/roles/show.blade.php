@@ -4,11 +4,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                @foreach ($roles as $role)
+                <div class="col-md-12">
+                    <h2>{{ $role->display_name }} <small>{{ '@'.$role->name }}</small></h2>
+                    <p>{{ $role->description }}</p>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($role->permissions->groupBy('name') as $module)
                     <div class="card col-md-3 m-4">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $role->display_name }}<span class="small">{{ '@'.$role->name }}<span></h3>
-                            <p class="card-category"> Description : {{ $role->description }} </p>
+                            <h3 class="card-title">{{ collect($module)->first()['name'] }}</h3>
+                            <p class="card-category"> Description : {{ collect($module)->first()['name'] }} </p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -18,15 +24,14 @@
                                             Permission
                                         </th>
                                         <th class="text-right">
-                                            Total : {{ $role->permissions->count() }}
                                         </th>
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($role->permissions->slice(0, 6) as $permission)
+                                        @foreach ($module as $permission)
                                             <tr>
                                                 <td>
-                                                    {{ $permission->display_name }}
+                                                    {{ $permission['permission'] }}
                                                 </td>
                                                 <td class="text-right">
                                                     <i class="nc-icon nc-key-25"></i>
@@ -36,10 +41,6 @@
 
                                     </tbody>
                                 </table>
-
-                                @if ($role->permissions->count() > 6)
-                                    <a href="" class="pull-right mr-3"><b>View More</b></a>
-                                @endif
                             </div>
                         </div>
                     </div>

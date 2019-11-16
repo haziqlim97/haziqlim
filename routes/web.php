@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
         // Manage Role
         Route::group(['prefix' => 'role', 'as' => 'role:'], function() {
             Route::get('index', 'RoleController@index')->name('index');
+            Route::get('{role}/show', 'RoleController@show')->name('show');
         });
 
         // Manage Permission

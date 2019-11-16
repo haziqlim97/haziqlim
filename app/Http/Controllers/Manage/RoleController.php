@@ -53,7 +53,30 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        // get all the roles
+        $role = Role::find($id);
+
+        $module = collect();
+
+        $role->permissions->transform(function ($item, $key) use($module) {
+            $pieces = explode("-", $item->name);
+
+            return collect([
+                'name' => $pieces[1],
+                'permission' => $pieces[0]
+            ]);
+        });
+
+        //dd($role->permissions->groupBy('name'));
+
+        //dd($module->groupBy('name'));
+
+        //dd($role->permissions);
+
+
+        // load the view and pass the permissions
+        return view('manage.roles.show')
+                ->withRole($role);
     }
 
     /**
