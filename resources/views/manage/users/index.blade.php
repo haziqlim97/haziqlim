@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Users</h4>
+                    <h4 class="card-title"> List of Users</h4>
                     <p class="card-category"> All user list </p>
                 </div>
                 <div class="card-body">
