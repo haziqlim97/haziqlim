@@ -3,15 +3,19 @@
 return [
     'role_structure' => [
         'admin' => [
-            'roles' => 'c,r,u,d',
+            'customer' => 'c,r,u,d',
             'package' => 'c,r,u,d',
-            'order' => 'r,u'
+            'order' => 'r,u',
+            'user' => 'c,r,u,d',
+            'roles' => 'c,r,u,d',
+            'permission' => 'c,r,u,d'
         ],
         'staff' => [
+            'customer' => 'c,r,u',
             'package' => 'c,r,u',
             'order' => 'r,u'
         ],
-        'user' => [
+        'customer' => [
             'order' => 'c'
         ],
     ],
