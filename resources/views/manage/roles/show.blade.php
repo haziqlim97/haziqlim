@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12">
-                    <h2>{{ $role->display_name }} <small>{{ '@'.$role->name }}</small></h2>
-                    <p>{{ $role->description }}</p>
+                <div class="col-md-12 text-center">
+                    <h2 class="">{{ $role->display_name }}<small>{{ '@'.$role->name }}</small></h2>
+                    <p class="p-0">Role Description : {{ $role->description }}</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($role->permissions->groupBy('name') as $module)
                     <div class="card col-md-3 m-4">
                         <div class="card-header">
