@@ -11,7 +11,7 @@ return [
             'package' => 'c,r,u',
             'order' => 'r,u'
         ],
-        'user' => [
+        'customer' => [
             'order' => 'c'
         ],
     ],
