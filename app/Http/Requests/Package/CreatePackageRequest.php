@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Package;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteUserRequest extends FormRequest
+class CreatePackageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,9 @@ class DeleteUserRequest extends FormRequest
     {
         return [
             //
-            'confirm' => ['in:CONFIRM']
+            'name' => ['required', 'min:5', 'max:255'],
+            'content' => ['required', 'min:20', 'max:255'],
+            "price" => ['required', 'numeric', 'between:0,9999'],
         ];
     }
 }

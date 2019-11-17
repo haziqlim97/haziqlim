@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Manage;
 
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
-use Hash;
-use Session;
-
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\DeleteUserRequest;
 use App\User;
 use App\Role;
-
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\DeleteUserRequest;
+use Hash;
+use Session;
 
 class UserController extends Controller
 {

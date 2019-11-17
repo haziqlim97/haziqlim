@@ -35,17 +35,17 @@
             </li>
             @endpermission
 
-            @permission('read-customer')
-            <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
-                <a href="{{ route('customer:index') }}">
+            @permission('read-package')
+            <li class=" {{ Request::is('package/*') ? 'active' : '' }}">
+                <a href="{{ route('package:index') }}">
                     <i class="nc-icon nc-diamond"></i>
                     <p>Package</p>
                 </a>
             </li>
             @endpermission
 
-            @permission('read-customer')
-            <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
+            @permission('read-order')
+            <li class=" {{ Request::is('order/*') ? 'active' : '' }}">
                 <a href="{{ route('customer:index') }}">
                     <i class="nc-icon nc-delivery-fast"></i>
                     <p>Order</p>

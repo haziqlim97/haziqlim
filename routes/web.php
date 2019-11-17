@@ -31,6 +31,16 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
         Route::group(['prefix' => 'customer', 'as' => 'customer:'], function() {
             Route::get('index', 'UserController@customer')->name('index');
         });
+
+        // Manage Package
+        Route::group(['prefix' => 'package', 'as' => 'package:'], function() {
+            Route::get('index', 'PackageController@index')->name('index');
+            Route::get('create', 'PackageController@create')->name('create');
+            Route::get('show', 'PackageController@show')->name('show');
+            Route::post('edit', 'PackageController@edit')->name('edit');
+
+            Route::post('store', 'PackageController@store')->name('store');
+        });
     });
     
     // Admin
