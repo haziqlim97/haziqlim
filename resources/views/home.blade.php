@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="sneaky/vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="sneaky/vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="sneaky/vendors/Magnific-Popup/magnific-popup.css">
-
+  <link rel="stylesheet" href="sneaky/vendors/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="sneaky/assets/css/style.css">
 </head>
 <body>
@@ -31,7 +31,9 @@
 
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+                {{ dd( Auth::User() ) }}
+              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item "><a class="nav-link" href="index.html"><span class="badge badge-dark"><i class="fas fa-shopping-cart"></i></span></a></li>
               <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> 
               <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a>
               <li class="nav-item"><a class="nav-link" href="chef.html">Chef</a>

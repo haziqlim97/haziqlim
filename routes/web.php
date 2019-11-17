@@ -12,12 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer.main');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cart','CartController@index')->name('cart');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
