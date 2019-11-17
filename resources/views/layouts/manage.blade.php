@@ -28,8 +28,6 @@
             <div class="content">
                 @yield('content')
             </div>
-
-
             @include('manage.footer')
         </div>
     </div>
@@ -55,6 +53,15 @@
         demo.initChartsPages();
         });
     </script>
+
+    @include('notification')
+
+    <script>
+        //@if(Session::has('success'))
+              notification.show('top','center');
+        //@endif
+    </script>
+    
      
 </body>
 

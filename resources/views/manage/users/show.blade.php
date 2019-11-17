@@ -89,7 +89,7 @@
                 <p class="card-category">  </p>
             </div>
             <div class="card-body">
-                <a href="{{ route('user:show', $user->id) }}"  class="btn btn-success btn-round">edit</a>
+                <a href="{{ route('user:edit', $user->id) }}"  class="btn btn-success btn-round">edit</a>
                 <a href="{{ route('user:show', $user->id) }}"  
                    class="btn btn-danger btn-round"  
                    data-toggle="modal" 
@@ -101,28 +101,30 @@
 
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLongTitle">Are you sure ?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">If you really want to delete this user please enter <b class="text-danger">CONFIRM</b> in the input below</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Enter "CONFIRM"'>
-    <small id="emailHelp" class="form-text text-muted">You won't be able to retrieve this user again after deletion.</small>
-  </div>
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Delete</button>
-      </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLongTitle">Are you sure ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteUserForm" method="POST" action="{{ route('user:destroy', $user->id)}}">
+                    @method('delete')
+                    @csrf
+                    <div class="form-group">
+                        <label for="inputConfirm">If you really want to delete this user please enter <b class="text-danger">CONFIRM</b> in the input below</label>
+                        <input type="text" name="confirm" class="form-control" id="inputConfirm" aria-describedby="confirmHelp" placeholder='Enter "CONFIRM"'>
+                        <small id="confirmHelp" class="form-text text-muted">You won't be able to retrieve this user again after deletion.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger" form="deleteUserForm" >Delete</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 @endsection

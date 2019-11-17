@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Hash;
+use Session;
 
 use App\User;
 use App\Role;
+
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\DeleteUserRequest;
 
 class UserController extends Controller
 {
@@ -132,39 +136,46 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $this->validateWith([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,'.$id
-          ]);
+		$user->update($request->all());
+		$user->syncRoles([$request->role]);
 
-          $user = User::findOrFail($id);
-          $user->name = $request->name;
-          $user->email = $request->email;
+        Session::flash('success', Sprintf('%s has been updated', $user->name));
 
-          /*
-          if ($request->password_options == 'auto') {
-            $length = 10;
-            $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
-            $str = '';
-            $max = mb_strlen($keyspace, '8bit') - 1;
-            for ($i = 0; $i < $length; ++$i) {
-                $str .= $keyspace[random_int(0, $max)];
-            }
-            $user->password = Hash::make($str);
-          } elseif ($request->password_options == 'manual') {
-            $user->password = Hash::make($request->password);
-          }*/
+		return redirect()->route('user:index');
+		
+        // $this->validateWith([
+        //     'name' => 'required|max:255',
+        //     'email' => 'required|email|unique:users,email,'.$id
+        //   ]);
 
-          $user->save();
+        //   $user = User::findOrFail($id);
+        //   $user->name = $request->name;
+        //   $user->email = $request->email;
 
-          //dd($request->role);
+        //   /*
+        //   if ($request->password_options == 'auto') {
+        //     $length = 10;
+        //     $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+        //     $str = '';
+        //     $max = mb_strlen($keyspace, '8bit') - 1;
+        //     for ($i = 0; $i < $length; ++$i) {
+        //         $str .= $keyspace[random_int(0, $max)];
+        //     }
+        //     $user->password = Hash::make($str);
+        //   } elseif ($request->password_options == 'manual') {
+        //     $user->password = Hash::make($request->password);
+        //   }*/
 
-          $user->syncRoles([$request->role]);
+        //   $user->save();
 
-          //$user->syncRoles(explode(',', $request->roles));
-          return redirect()->route('users.show', $id);
+        //   //dd($request->role);
+
+        //   $user->syncRoles([$request->role]);
+
+        //   //$user->syncRoles(explode(',', $request->roles));
+        //   return redirect()->route('users.show', $id);
     }
 
     /**
@@ -173,8 +184,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeleteUserRequest $request, User $user)
     {
-        //
+
+        $user->delete();
+        Session::flash('success', Sprintf('%s has been deleted', $user->name));
+
+        return redirect()->route('user:index');
     }
 }

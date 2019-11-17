@@ -42,6 +42,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
             Route::get('{user}/show', 'UserController@show')->name('show');
             Route::get('{user}/edit', 'UserController@edit')->name('edit');
 
+            route::put('{user}/update', 'UserController@update')->name('update');
+            route::delete('{user}/destroy', 'UserController@destroy')->name('destroy');
         });
 
         // Manage Role
