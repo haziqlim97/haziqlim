@@ -2,10 +2,38 @@
 
 @section('content')
     <div class="row">
+        @if ($packages->isEmpty())
+            <div class="col-lg-12 justify-content-center" 
+                style="
+                height: 50vh;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center
+                ">
+                <div class="text-center">
+                    <i class="nc-icon nc-diamond text-danger" style="font-size:60px;"></i>
+                    <br>
+                    Aww,
+                    Your Packages List is Empty, <br>
+                    Please add new package and it will appear here.
+                    <br>
+                    <a href="{{ route('package:create') }}" class="btn btn-primary btn-large">Create New Package</a>
+                    <br><br>
+                </div>     
+            </div>
+        @else
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> List of Package </h4>
+                    <a href="{{ route('package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
+                    <h4 class="card-title"> 
+                        List of Package 
+                    </h4>
                     <p class="card-category"> All of your catering packages is here </p>
                 </div>
                 <div class="card-body">
@@ -59,9 +87,13 @@
 
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
         </div>
+
+                        
+        @endif
     </div>
 @endsection
