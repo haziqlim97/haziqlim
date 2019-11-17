@@ -13,6 +13,9 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
+                                    #
+                                </th>
+                                <th>
                                     Name
                                 </th>
                                 <th>
@@ -27,8 +30,11 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($users as $user)
+                                @foreach ($users as $key => $user)
                                     <tr>
+                                        <td>
+                                            {{ $key+1 }}
+                                        </td>
                                         <td>
                                             {{ $user->name }}
                                         </td>
@@ -48,7 +54,7 @@
                                 @endforeach
 
                             </tbody>
-                        <table>
+                        </table>
                     </div>
                 </div>
             </div>
