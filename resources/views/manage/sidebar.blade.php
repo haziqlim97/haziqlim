@@ -24,14 +24,36 @@
                 </a>
             </li>
 
+            <hr>
+
             @permission('read-customer')
             <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
                 <a href="{{ route('customer:index') }}">
-                    <i class="nc-icon nc-circle-10"></i>
+                    <i class="nc-icon nc-badge"></i>
                     <p>Customers</p>
                 </a>
             </li>
             @endpermission
+
+            @permission('read-customer')
+            <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
+                <a href="{{ route('customer:index') }}">
+                    <i class="nc-icon nc-diamond"></i>
+                    <p>Package</p>
+                </a>
+            </li>
+            @endpermission
+
+            @permission('read-customer')
+            <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
+                <a href="{{ route('customer:index') }}">
+                    <i class="nc-icon nc-delivery-fast"></i>
+                    <p>Order</p>
+                </a>
+            </li>
+            @endpermission
+
+            <hr>
 
             @permission('read-user')
             <li class=" {{ Request::is('user/*') ? 'active' : '' }}">

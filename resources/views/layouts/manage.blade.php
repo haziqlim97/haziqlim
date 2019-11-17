@@ -28,6 +28,9 @@
             <div class="content">
                 @yield('content')
             </div>
+
+
+            @include('manage.footer')
         </div>
     </div>
 
@@ -52,6 +55,7 @@
         demo.initChartsPages();
         });
     </script>
+     
 </body>
 
 </html>
