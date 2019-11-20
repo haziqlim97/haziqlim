@@ -13,69 +13,42 @@
         </tr>
     </thead>
     <tbody class="border">
-        <tr>
-            <th scope="row" class="border-bottom">1</th>
-            <td class="border-bottom">
-                <div class="media">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlVa5KaiFAz-6dHSmlmtyI86pW9zGZjYO2Ftp-3ryktqRFTJci" class="mr-3" alt="..." width="128" height="128">
-                    <div class="media-body">
-                        <h5 class="mt-0">Media heading</h5>
+        @foreach ($items as $item)
+            <tr>
+                <th scope="row" class="border-bottom">1</th>
+                <td class="border-bottom">
+                    <div class="media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlVa5KaiFAz-6dHSmlmtyI86pW9zGZjYO2Ftp-3ryktqRFTJci" class="mr-3" alt="..." width="128" height="128">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ $item->name }}</h5>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td class="border-bottom" class="text-center">
-                <div class="input-group mb-2 form-row">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+                </td>
+                <td class="border-bottom" class="text-center">
+                    <div class="input-group mb-2 form-row">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" value="{{ $item->quantity }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
+                        </div>
                     </div>
-                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
-                    </div>
-                </div>
-            </td>
-            <td class="border-bottom">@mdo</td>
-        </tr>
+                </td>
+                <td class="border-bottom">RM {{ $item->price }}</td>
+            </tr>
+            
+        @endforeach
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3" class="border">Total</td>
-            <td class="border">RM100</td>
+            <td class="border">RM {{ $total }}</td>
         </tr>
     </tfoot>
     </table>
 
     <div class="col-lg-4 offset-lg-8">
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Have Coupon ?
-                    </button>
-                </h5>
-                </div>
-
-                <div id="collapseOne" class="collapse show border-bottom" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="row">
-                        <div class="col-md-8">
-                            <form action="">
-                                <div class="form-group">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Apply</button>
-                        </div>
-                        </div>
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <table class="table table-borderless">
             <tr>
                 <td>Total</td>

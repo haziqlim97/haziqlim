@@ -15,9 +15,20 @@ Route::get('/', function () {
     return view('customer.main');
 });
 
+Route::get('/test', 'CartController@test');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Manage Cart
+Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
+    // Route::get('index', 'PermissionController@index')->name('index');
+
+    Route::post('cart/{package}', 'CartController@store')->name('add');
+});
 
 Route::get('/cart','CartController@index')->name('cart');
 
