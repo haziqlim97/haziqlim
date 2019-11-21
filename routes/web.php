@@ -39,6 +39,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
 Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
     // Route::get('index', 'PermissionController@index')->name('index');
 
+    Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
     Route::get('success', 'PaymentController@onSuccess')->name('onSuccess');
 });
 
