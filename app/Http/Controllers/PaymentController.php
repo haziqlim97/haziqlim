@@ -35,14 +35,14 @@ class PaymentController extends Controller
         return view('checkout')->withSession($session);
     }
 
-    public function onSuccess(Type $var = null)
+    public function onSuccess()
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here: https://dashboard.stripe.com/account/apikeys
         \Stripe\Stripe::setApiKey('sk_test_aPFO1NKLxbxZjPWen4jHXNhy00FwhxnsCR');
 
         // You can find your endpoint's secret in your webhook settings
-        $endpoint_secret = 'whsec_LQcEogy4sybZNnZiW3K5HKU8W302lZdd';
+        $endpoint_secret = 'whsec_fQOUbEFhhmfY4aCd0abz7Saam5tigm9Z';
 
         $payload = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
