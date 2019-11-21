@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'https://stripe.com/*',
+        'payment/success',
         'https://dashboard.stripe.com/',
     ];
 }
