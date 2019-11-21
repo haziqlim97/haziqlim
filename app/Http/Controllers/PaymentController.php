@@ -28,7 +28,7 @@ class PaymentController extends Controller
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [$items],
-            'success_url' => env('APP_URL').'/success?session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => env('APP_URL').'/payment/success?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => env('APP_URL').'/cancel',
             ]);
 
