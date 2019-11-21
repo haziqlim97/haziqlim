@@ -24,6 +24,19 @@ class PackageController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all()
+    {
+        //
+        $packages = Package::all();
+
+        return view('customer.packages')->withPackages($packages);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

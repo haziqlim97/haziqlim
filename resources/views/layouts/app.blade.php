@@ -12,6 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -78,3 +80,18 @@
     </div>
 </body>
 </html>
+
+<script>
+
+document.getElementById("pay").addEventListener("click", pay());
+
+function pay() {
+
+    var stripe = Stripe('sk_test_aPFO1NKLxbxZjPWen4jHXNhy00FwhxnsCR');
+
+    stripe.redirectToCheckout({
+        sessionId: {{ $session }}
+    }).then(function (result) {        
+    });
+}
+</script>

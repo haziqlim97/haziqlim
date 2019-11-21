@@ -18,10 +18,14 @@ Route::get('/', function () {
 Route::get('/test', 'CartController@test');
 
 
+Route::get('/pay', 'PaymentController@makePayment');
+
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/package', 'Manage\PackageController@all')->name('package:all');
 
 // Manage Cart
 Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
