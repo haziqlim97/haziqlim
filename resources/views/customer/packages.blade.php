@@ -12,19 +12,25 @@
     <br><br>
     <div class="row mb-5">
         @foreach ($packages as $package)
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>{{ $package->name }}<h4>
-                        <p>RM {{ $package->price }}</p>
-                    </div>
-                    <div class="card-body">
-                        {{ $package->content }}
-                    </div>
-                    <div class="card-footer">
-                        <form>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </form>
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{ asset('media/thumbnails/'.$package->image) }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $package->name }} ( <small class="text-muted">RM {{ $package->price }}</small> )</h5>
+                                <p class="card-text">{{ $package->description }}</p>
+                                <p>
+                                <a href="#" class="card-link pull-right">Details</a>
+                                <button form="cart-form" class="btn btn-primary pull-right"><i class="fas fa-shopping-cart"></i></button>
+                                </p>
+                                <form method="POST" action="{{ route('cart:add', $package->id) }}" id="cart-form">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

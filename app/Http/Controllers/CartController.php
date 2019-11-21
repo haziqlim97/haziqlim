@@ -21,6 +21,17 @@ class CartController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkout(){
+        return view('checkout')
+            ->withItems(Cart::session(auth()->user()->id)->getContent())
+            ->withTotal(Cart::session(auth()->user()->id)->getTotal());
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,7 +40,7 @@ class CartController extends Controller
     {
         $packages = Package::all();
 
-        return view('test')->withPackages($packages);
+        return view('cart')->withPackages($packages);
     }
 
     /**
@@ -55,7 +66,7 @@ class CartController extends Controller
         // $cart = new ShoppingCart();
         // $cart->add($package);
 
-        return Cart::session($userId)->getContent();
+        return redirect()->route('cart');
     }
 
     /**

@@ -31,8 +31,18 @@ Route::get('/package', 'Manage\PackageController@all')->name('package:all');
 Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
     // Route::get('index', 'PermissionController@index')->name('index');
 
-    Route::post('cart/{package}', 'CartController@store')->name('add');
+    Route::post('{package}', 'CartController@store')->name('add');
+    Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
 });
+
+// Payment
+Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
+    // Route::get('index', 'PermissionController@index')->name('index');
+
+    Route::get('success', 'PaymentController@onSuccess')->name('onSuccess');
+});
+
+
 
 Route::get('/cart','CartController@index')->name('cart');
 

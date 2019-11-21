@@ -63,7 +63,10 @@
                 <td>RM 130</td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><button class="button"> Proceed to Checkout</button></td>
+                <td colspan="2" align="center"><button type="submit" form="checkout" class="button"> Proceed to Checkout</button></td>
+
+                <form method="GET" action="{{ route('cart:checkout') }}" id="checkout">
+                </form>
             </tr>
         </table>
     </div>

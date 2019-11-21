@@ -12,7 +12,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -81,17 +80,20 @@
 </body>
 </html>
 
+<script src="https://js.stripe.com/v3/"></script>
+
 <script>
+// window.onload=function(){
+//   document.getElementById("pay-button").click();
+// };
 
-document.getElementById("pay").addEventListener("click", pay());
+var stripe = Stripe('pk_test_65wAWRCaupNlIbKuGoOxE1hQ00WP11fkr1');
 
-function pay() {
-
-    var stripe = Stripe('sk_test_aPFO1NKLxbxZjPWen4jHXNhy00FwhxnsCR');
-
+const payButton = document.getElementById('pay-button');
+const sessionId = '{!! $session->id !!}';
+payButton.addEventListener('click', async (e) => {
     stripe.redirectToCheckout({
-        sessionId: {{ $session }}
-    }).then(function (result) {        
+        sessionId: sessionId
     });
-}
+});
 </script>

@@ -12,7 +12,8 @@
 
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
         <ul class="nav navbar-nav menu_nav justify-content-end">
-            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item {{ Request::is('/') || Request::is('home') ? 'active' : '' }}"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item {{ Request::is('package') ? 'active' : '' }}"><a class="nav-link" href="/package">Packages</a></li>
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @if (Route::has('register'))
