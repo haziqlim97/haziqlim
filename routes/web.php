@@ -33,6 +33,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
 
     Route::post('{package}', 'CartController@store')->name('add');
     Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
+    Route::post('checkout', 'PaymentController@makePayment')->name('checkout-post');
 });
 
 // Payment
