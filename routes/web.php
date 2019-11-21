@@ -33,7 +33,6 @@ Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
 
     Route::post('{package}', 'CartController@store')->name('add');
     Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
-    Route::post('checkout', 'PaymentController@makePayment')->name('checkout-post');
 });
 
 // Payment
@@ -42,6 +41,7 @@ Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
 
     Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
     Route::get('success', 'PaymentController@onSuccess')->name('onSuccess');
+    Route::post('success', 'PaymentController@onSuccess')->name('onSuccess-test');
 });
 
 
