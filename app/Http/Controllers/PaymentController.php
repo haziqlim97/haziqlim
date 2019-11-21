@@ -66,10 +66,10 @@ class PaymentController extends Controller
         if ($event->type == 'checkout.session.completed') {
         $session = $event->data->object;
 
-        // // Fulfill the purchase...
+        // Fulfill the purchase...
         // handle_checkout_session($session);
             
-        // }
+        }
 
         http_response_code(200);
 
