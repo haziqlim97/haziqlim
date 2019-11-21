@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Package\CreatePackageRequest;
 use App\Package;
 use Session;
+use Image;
 
 class PackageController extends Controller
 {
@@ -55,8 +56,18 @@ class PackageController extends Controller
      */
     public function store(CreatePackageRequest $request)
     {
+        if ($image = $request->file('image')) {
+            $filename = $image->hashName();
+            $path_thumb = public_path('media/thumbnails/' . $filename);
+            Image::make($image->getRealPath())->resize(350, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(350, 177)->save($path_thumb);
+
+            $path = public_path('media/images/' . $filename);
+            Image::make($image->getRealPath())->save($path);
+        }
         //
-        if (Package::create($request->all())) {
+        if (Package::create(array_merge($request->all(), ['image' => $filename]))) {
             Session::flash('success', Sprintf('%s has been created', $request->get('name')));
         }
 

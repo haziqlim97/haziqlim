@@ -26,8 +26,9 @@ class CreatePackageRequest extends FormRequest
         return [
             //
             'name' => ['required', 'min:5', 'max:255'],
+            'description' => ['required', 'min:20', 'max:255'],
             'content' => ['required', 'min:20', 'max:255'],
-            "price" => ['required', 'numeric', 'between:0,9999'],
+            'price' => ['required', 'numeric', 'between:0,9999'],
         ];
     }
 }

@@ -18,11 +18,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label">File</label>
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Upload Image</label>
                         <div class="col-sm-8">
                             <div class="custom-file">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <input type="file" name="image" class="custom-file-input" id="customFile">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
@@ -41,6 +41,20 @@
                             @enderror
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Package Description</label>
+                        <div class="col-sm-8">
+                            <textarea rows="8" class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') }}</textarea>
+                            
+                            @error('description')
+                            <div class="invalid-feedback">
+                                {{ $message }} 
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Package Content</label>
                         <div class="col-sm-8">
