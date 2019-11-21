@@ -18,7 +18,7 @@ class PaymentController extends Controller
             $items[] = [
                 'name' => $item->name,
                 'description' => '-',
-                'images' => ['https://catering.test/media/thumbnails/'.$item->image],
+                'images' => [env('APP_URL').'/media/thumbnails/'.$item->image],
                 'amount' => $item->price . '00',
                 'currency' => 'myr',
                 'quantity' => $item->quantity,
@@ -28,8 +28,8 @@ class PaymentController extends Controller
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [$items],
-            'success_url' => 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => 'https://example.com/cancel',
+            'success_url' => env('APP_URL').'/success?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => env('APP_URL').'/cancel',
             ]);
 
         return view('checkout')->withSession($session);
