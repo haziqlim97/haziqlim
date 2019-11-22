@@ -44,7 +44,7 @@ class StripeService extends BaseService
     public function onCheckoutSessionCompleted()
     {
         $payload = @file_get_contents('php://input');
-        $sig_header = request()->header('HTTP_STRIPE_SIGNATURE');
+        $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
         $event = null;
 
         try {
@@ -66,7 +66,7 @@ class StripeService extends BaseService
         $session = $event->data->object;
 
         // Fulfill the purchase...
-        $this->generatePaymentReceipt($session);
+        generatePaymentReceipt($session);
             
         }
 
