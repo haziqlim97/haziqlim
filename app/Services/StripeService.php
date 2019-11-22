@@ -78,7 +78,7 @@ class StripeService extends BaseService
     public function generatePaymentReceipt($StripeRequest)
     {
         Sale::create([
-            'user_id' => $this->user->id,
+            'user_id' => auth()->user()->id,
             'payment_id' => $StripeRequest->payment_intent,
             'items' => json_encode($StripeRequest->display_items),
             'tax'   => 0,
