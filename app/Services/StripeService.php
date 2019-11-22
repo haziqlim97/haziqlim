@@ -66,7 +66,7 @@ class StripeService extends BaseService
         $session = $event->data->object;
 
         // Fulfill the purchase...
-        generatePaymentReceipt($session);
+        $this->generatePaymentReceipt($session);
             
         }
 
