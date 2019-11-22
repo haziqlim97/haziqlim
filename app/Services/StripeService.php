@@ -34,7 +34,7 @@ class StripeService extends BaseService
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [$items],
-            'success_url' => env('APP_URL').'webhooks/payment/success?session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => env('APP_URL').'/webhooks/payment/success?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => env('APP_URL').'/cancel',
             ]);
 
