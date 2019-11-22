@@ -80,6 +80,7 @@ class StripeService extends BaseService
         Sale::create([
             'user_id' => 1,
             'payment_id' => $StripeRequest->payment_intent,
+            'receiptNumber' => Carbon::now()->timestamp,
             'items' => json_encode($StripeRequest->display_items),
             'tax'   => 0,
             'subTotal'  => 0,
