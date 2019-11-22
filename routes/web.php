@@ -37,11 +37,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
 
 // Payment
 Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
-    // Route::get('index', 'PermissionController@index')->name('index');
-
-    Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
-    Route::get('success', 'PaymentController@onSuccess')->name('onSuccess');
-    Route::post('success', 'PaymentController@onSuccess')->name('onSuccess-test');
+    // Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
 });
 
 
@@ -94,4 +90,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
             Route::get('index', 'PermissionController@index')->name('index');
         });
 	});
+});
+
+// Payment
+Route::group(['prefix' => 'webhooks', 'as' => 'webhooks:'], function() {
+    Route::post('payment/success', 'PaymentController@onSuccess')->name('paymentSuccess');
 });
