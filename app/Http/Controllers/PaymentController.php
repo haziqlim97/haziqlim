@@ -31,7 +31,8 @@ class PaymentController extends Controller
 
     public function onSuccess()
     {
-    
-        return app('StripeService')->onCheckoutSessionCompleted();
+        \Log::info('onSuccess');
+        $response = app('StripeService')->onCheckoutSessionCompleted();
+        return $response;
     }
 }
