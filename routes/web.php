@@ -38,6 +38,8 @@ Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
 // Payment
 Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
     // Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
+
+    Route::get('success', 'PaymentController@onSuccess')->name('paymentSuccess');
 });
 
 
@@ -95,5 +97,4 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
 // Payment
 Route::group(['prefix' => 'webhooks', 'as' => 'webhooks:'], function() {
     Route::post('payment/success', 'PaymentController@onSuccess')->name('paymentSuccess');
-    Route::get('payment/success', 'PaymentController@onSuccess')->name('paymentSuccess');
 });

@@ -34,7 +34,7 @@ class StripeService extends BaseService
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [$items],
-            'success_url' => env('APP_URL').'/webhooks/payment/success?session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => env('APP_URL').'/payment/success?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => env('APP_URL').'/cancel',
             ]);
 
@@ -78,7 +78,7 @@ class StripeService extends BaseService
     public function generatePaymentReceipt($StripeRequest)
     {
         Sale::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => 1,
             'payment_id' => $StripeRequest->payment_intent,
             'items' => json_encode($StripeRequest->display_items),
             'tax'   => 0,
