@@ -29,10 +29,15 @@ class PaymentController extends Controller
         return view('checkout')->withSession($stripeSession);
     }
 
-    public function onSuccess()
+    public function oneTimePaymentWebhook()
     {
         \Log::info('onSuccess');
         $response = app('StripeService')->onCheckoutSessionCompleted();
         return $response;
+    }
+
+    public function displaySuccessPage()
+    {
+        return view('success');
     }
 }
