@@ -54,7 +54,6 @@ class CartController extends Controller
         $userId = auth()->user()->id;
         Cart::session($userId);
 
-        // array format
         Cart::add([
             'id' => $package->id,
             'name' => $package->name,
@@ -62,11 +61,8 @@ class CartController extends Controller
             'quantity' => 1,
             'attributes' => array()
         ]);
-        
-        // $cart = new ShoppingCart();
-        // $cart->add($package);
 
-        return redirect()->route('cart');
+        return redirect()->back();
     }
 
     /**

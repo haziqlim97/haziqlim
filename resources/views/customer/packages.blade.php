@@ -24,11 +24,12 @@
                                 <p class="card-text">{{ $package->description }}</p>
                                 <p>
                                 <a href="#" class="card-link pull-right">Details</a>
-                                <button form="cart-form" class="btn btn-primary pull-right"><i class="fas fa-shopping-cart"></i></button>
-                                </p>
-                                <form method="POST" action="{{ route('cart:add', $package->id) }}" id="cart-form">
+
+                                <form method="POST" action="{{ route('cart:add', $package->id) }}">
                                     @csrf
+                                    <button class="btn btn-primary pull-right"><i class="fas fa-shopping-cart"></i></button>
                                 </form>
+                                </p>
                             </div>
                         </div>
                     </div>
