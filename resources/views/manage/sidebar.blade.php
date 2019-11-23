@@ -46,7 +46,7 @@
 
             @permission('read-order')
             <li class=" {{ Request::is('order/*') ? 'active' : '' }}">
-                <a href="{{ route('customer:index') }}">
+                <a href="{{ route('order:index') }}">
                     <i class="nc-icon nc-delivery-fast"></i>
                     <p>Order</p>
                 </a>

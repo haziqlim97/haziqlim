@@ -22,12 +22,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/package', 'Manage\PackageController@all')->name('package:all');
 
-// Manage Cart
-Route::group(['prefix' => 'cart', 'as' => 'cart:', 'middleware' => ['CanUseCart']], function() {
-    Route::get('/', 'CartController@index')->name('cart');
+// Order
+Route::group(['prefix' => 'order', 'as' => 'order:', 'middleware' => ['CanUseCart']], function() {
+    Route::get('/', 'OrderController@index')->name('list');
 
-    Route::post('{package}', 'CartController@store')->name('add');
-    Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
+    Route::post('{package}', 'OrderController@store')->name('add');
+    Route::get('checkout', 'OrderController@checkout')->name('checkout');
 });
 
 // Payment
@@ -59,6 +59,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
             Route::post('store', 'PackageController@store')->name('store');
             Route::put('{package}/update', 'PackageController@update')->name('update');
             Route::delete('{package}/destroy', 'PackageController@destroy')->name('destroy');
+        });
+
+        // Manage Order
+        Route::group(['prefix' => 'order', 'as' => 'order:'], function() {
+            Route::get('index', 'OrderController@index')->name('index');
+            Route::get('{order}/show', 'OrderController@show')->name('show');
         });
     });
     

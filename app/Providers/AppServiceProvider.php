@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\CartService;
 use App\Services\StripeService;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind('CartService', function ($app) {
+            return new CartService;
+        });
+
         $this->app->bind('StripeService', function ($app) {
             return new StripeService;
         });

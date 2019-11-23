@@ -37,7 +37,7 @@
                 </ul>
 			</li>
             @endguest
-            <li class="nav-item"><a href="/cart" class="nav-link"><i class="fas fa-shopping-cart" style="color:black"></i></a></li>
+            <li class="nav-item"><a href="{{ route('order:list') }}" class="nav-link"><i class="fas fa-shopping-cart" style="color:black"></i></a></li>
             
           
         </ul>

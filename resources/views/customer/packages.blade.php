@@ -25,7 +25,7 @@
                                 <p>
                                 <a href="#" class="card-link pull-right">Details</a>
 
-                                <form method="POST" action="{{ route('cart:add', $package->id) }}">
+                                <form method="POST" action="{{ route('order:add', $package->id) }}">
                                     @csrf
                                     <button class="btn btn-primary pull-right"><i class="fas fa-shopping-cart"></i></button>
                                 </form>
