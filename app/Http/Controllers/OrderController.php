@@ -40,7 +40,7 @@ class OrderController extends Controller
         if ($content->isEmpty()) {
             Session::flash('error', 'Please add at least one item to Order List');
 
-            return redirect()->route('cart:cart');
+            return redirect()->route('order:list');
         }
 
         DB::transaction(function () use ($content) {
