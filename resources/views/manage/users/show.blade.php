@@ -75,7 +75,7 @@
                         </table>
 
                         @if ($role->permissions->count() > 6)
-                        <a href="{{route('role:show', $role->id)}}" class="pull-right mr-3 card-link"><b>View More</b></a>
+                        <a href="{{ route('manage:role:show', $role->id) }}" class="pull-right mr-3 card-link"><b>View More</b></a>
                         @endif
                     </div>
                 </div>
@@ -89,8 +89,8 @@
                 <p class="card-category">  </p>
             </div>
             <div class="card-body">
-                <a href="{{ route('user:edit', $user->id) }}"  class="btn btn-success btn-round">edit</a>
-                <a href="{{ route('user:show', $user->id) }}"  
+                <a href="{{ route('manage:user:edit', $user->id) }}"  class="btn btn-success btn-round">edit</a>
+                <a href="{{ route('manage:user:show', $user->id) }}"  
                    class="btn btn-danger btn-round"  
                    data-toggle="modal" 
                    data-target="#deleteModal">delete</a>
@@ -110,7 +110,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="deleteUserForm" method="POST" action="{{ route('user:destroy', $user->id)}}">
+                <form id="deleteUserForm" method="POST" action="{{ route('manage:user:destroy', $user->id)}}">
                     @method('delete')
                     @csrf
                     <div class="form-group">

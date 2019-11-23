@@ -22,7 +22,7 @@
                     Your Packages List is Empty, <br>
                     Please add new package and it will appear here.
                     <br>
-                    <a href="{{ route('package:create') }}" class="btn btn-primary btn-large">Create New Package</a>
+                    <a href="{{ route('manage:package:create') }}" class="btn btn-primary btn-large">Create New Package</a>
                     <br><br>
                 </div>     
             </div>
@@ -30,7 +30,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
+                    <a href="{{ route('manage:package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
                     <h4 class="card-title"> 
                         List of Package 
                     </h4>
@@ -85,8 +85,8 @@
                                             {{ $package->updated_at->format('F d, Y - h:i a') }}
                                         </td>
                                         <td class="text-right">
-                                            <a href="{{ route('package:show', $package->id) }}"  class="btn btn-primary btn-round">view</a>
-                                            <a href="{{ route('package:edit', $package->id) }}"  class="btn btn-success btn-round">edit</a>
+                                            <a href="{{ route('manage:package:show', $package->id) }}"  class="btn btn-primary btn-round">view</a>
+                                            <a href="{{ route('manage:package:edit', $package->id) }}"  class="btn btn-success btn-round">edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

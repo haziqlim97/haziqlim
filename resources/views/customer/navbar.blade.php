@@ -25,7 +25,7 @@
                   aria-expanded="false">{{ Auth::user()->name }}</a>
                 <ul class="dropdown-menu">
 
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('manage:dashboard') }}">Dashboard</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

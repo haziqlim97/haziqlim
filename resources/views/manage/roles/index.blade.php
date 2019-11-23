@@ -39,7 +39,7 @@
                                     </table>
 
                                     @if ($role->permissions->count() > 6)
-                                    <a href="{{route('role:show', $role->id)}}" class="pull-right mr-3 card-link"><b>View More</b></a>
+                                    <a href="{{route('manage:role:show', $role->id)}}" class="pull-right mr-3 card-link"><b>View More</b></a>
                                     @endif
                                 </div>
                             </div>

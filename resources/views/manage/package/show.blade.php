@@ -76,8 +76,8 @@
                 <p class="card-category">  </p>
             </div>
             <div class="card-body">
-                <a href="{{ route('package:edit', $package->id) }}"  class="btn btn-success btn-round">edit</a>
-                <a href="{{ route('user:show', $package->id) }}"  
+                <a href="{{ route('manage:package:edit', $package->id) }}"  class="btn btn-success btn-round">edit</a>
+                <a href="{{ route('manage:package:show', $package->id) }}"  
                    class="btn btn-danger btn-round"  
                    data-toggle="modal" 
                    data-target="#deleteModal">delete</a>
@@ -97,7 +97,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="deleteUserForm" method="POST" action="{{ route('package:destroy', $package->id)}}">
+                <form id="deleteUserForm" method="POST" action="{{ route('manage:package:destroy', $package->id)}}">
                     @method('delete')
                     @csrf
                     <div class="form-group">

@@ -47,8 +47,8 @@
                                             @endforeach
                                         </td>
                                         <td class="text-right">
-                                            <a href="{{ route('user:show', $user->id) }}"  class="btn btn-primary btn-round">view</a>
-                                            <a href="{{ route('user:edit', $user->id) }}"  class="btn btn-success btn-round">edit</a>
+                                            <a href="{{ route('manage:user:show', $user->id) }}"  class="btn btn-primary btn-round">view</a>
+                                            <a href="{{ route('manage:user:edit', $user->id) }}"  class="btn btn-success btn-round">edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

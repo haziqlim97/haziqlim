@@ -23,7 +23,7 @@
                     Please wait for new order and it will appear here.<br><br>
                     If you don't have any packages, add one now!
                     <br>
-                    <a href="{{ route('package:create') }}" class="btn btn-primary btn-large">Create New Package</a>
+                    <a href="{{ route('manage:package:create') }}" class="btn btn-primary btn-large">Create New Package</a>
                     <br><br>
                 </div>     
             </div>
@@ -31,7 +31,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
+                    <a href="{{ route('manage:package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
                     <h4 class="card-title"> 
                         List of Order 
                     </h4>
@@ -70,7 +70,7 @@
                                             {{ $order->status }}
                                         </td>
                                         <td class="text-right">
-                                            <a href="{{ route('order:show', $order->id) }}"  class="btn btn-primary btn-round">view</a>
+                                            <a href="{{ route('manage:order:show', $order->id) }}"  class="btn btn-primary btn-round">view</a>
                                         </td>
                                     </tr>
                                 @endforeach

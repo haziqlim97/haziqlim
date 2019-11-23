@@ -17,8 +17,8 @@
         </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class=" {{ Request::is('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}">
+            <li class=" {{ Request::is('manage/dashboard') ? 'active' : '' }}">
+                <a href="{{ route('manage:dashboard') }}">
                     <i class="nc-icon nc-bank"></i>
                     <p>Dashboard</p>
                 </a>
@@ -27,8 +27,8 @@
             <hr>
 
             @permission('read-customer')
-            <li class=" {{ Request::is('customer/*') ? 'active' : '' }}">
-                <a href="{{ route('customer:index') }}">
+            <li class=" {{ Request::is('manage/customer/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:customer:index') }}">
                     <i class="nc-icon nc-badge"></i>
                     <p>Customers</p>
                 </a>
@@ -36,8 +36,8 @@
             @endpermission
 
             @permission('read-package')
-            <li class=" {{ Request::is('package/*') ? 'active' : '' }}">
-                <a href="{{ route('package:index') }}">
+            <li class=" {{ Request::is('manage/package/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:package:index') }}">
                     <i class="nc-icon nc-diamond"></i>
                     <p>Package</p>
                 </a>
@@ -45,8 +45,8 @@
             @endpermission
 
             @permission('read-order')
-            <li class=" {{ Request::is('order/*') ? 'active' : '' }}">
-                <a href="{{ route('order:index') }}">
+            <li class=" {{ Request::is('manage/order/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:order:index') }}">
                     <i class="nc-icon nc-delivery-fast"></i>
                     <p>Order</p>
                 </a>
@@ -56,24 +56,24 @@
             <hr>
 
             @permission('read-user')
-            <li class=" {{ Request::is('user/*') ? 'active' : '' }}">
-                <a href="{{ route('user:index') }}">
+            <li class=" {{ Request::is('manage/user/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:user:index') }}">
                     <i class="nc-icon nc-single-02"></i>
                     <p>Users</p>
                 </a>
             </li>
             @endpermission
             @permission('read-roles')
-            <li class=" {{ Request::is('role/*') ? 'active' : '' }}">
-                <a href="{{ route('role:index') }}">
+            <li class=" {{ Request::is('manage/role/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:role:index') }}">
                     <i class="nc-icon nc-lock-circle-open"></i>
                     <p>Roles</p>
                 </a>
             </li>
             @endpermission
             @permission('read-permission')
-            <li class=" {{ Request::is('permission/*') ? 'active' : '' }}">
-                <a href="{{ route('permission:index') }}">
+            <li class=" {{ Request::is('manage/permission/*') ? 'active' : '' }}">
+                <a href="{{ route('manage:permission:index') }}">
                     <i class="nc-icon nc-key-25"></i>
                     <p>Permissions</p>
                 </a>

@@ -9,7 +9,7 @@
                 <p class="card-category"> Please enter all details </p>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('package:update', $package->id) }}">
+                <form method="POST" action="{{ route('manage:package:update', $package->id) }}">
                     @method('put')
                     @csrf
 

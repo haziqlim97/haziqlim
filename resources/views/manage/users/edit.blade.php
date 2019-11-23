@@ -9,7 +9,7 @@
                 <p class="card-category"> Please enter all details </p>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('user:update', $user->id) }}">
+                <form method="POST" action="{{ route('manage:user:update', $user->id) }}">
                     @method('put')
                     @csrf
 
