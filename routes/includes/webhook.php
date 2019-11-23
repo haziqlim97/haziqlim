@@ -6,7 +6,5 @@ Route::group([
     
     ], function() {
     
-    $controller = 'OrderController';
-
-    Route::post('oneTimePaymentWebhook', $controller . '@oneTimePaymentWebhook')->name('paymentSuccess');
+    Route::post('oneTimePaymentWebhook', 'PaymentController@oneTimePaymentWebhook')->name('paymentSuccess');
 });

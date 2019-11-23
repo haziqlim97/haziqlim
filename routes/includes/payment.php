@@ -9,7 +9,7 @@ Route::group([
                     ]
     ], function() {
     
-    $controller = 'OrderController';
+    $controller = 'PaymentController';
     // Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
 
     Route::get('success', $controller . '@displaySuccessPage')->name('success');
