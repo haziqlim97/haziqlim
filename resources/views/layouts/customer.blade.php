@@ -7,13 +7,13 @@
   <title>Sneaky Catering - Home</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
 
-  <link rel="stylesheet" href="/sneaky/vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="sneaky/vendors/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="sneaky/vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="sneaky/vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="sneaky/vendors/Magnific-Popup/magnific-popup.css">
-  <link rel="stylesheet" href="sneaky/vendors/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="sneaky/assets/css/style.css">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/bootstrap/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/themify-icons/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/owl-carousel/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/owl-carousel/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/Magnific-Popup/magnific-popup.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/vendors/fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('sneaky/assets/css/style.css') }}">
 </head>
 <body>
 
@@ -23,13 +23,15 @@
 
   @include('customer.footer')
 
-  <script src="sneaky/vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="sneaky/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="sneaky/vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="sneaky/vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="sneaky/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
-  <script src="sneaky/assets/js/jquery.ajaxchimp.min.js"></script>
-  <script src="sneaky/assets/js/mail-script.js"></script>
-  <script src="sneaky/assets/js/main.js"></script>
+  <script src="{{ asset('sneaky/vendors/jquery/jquery-3.2.1.min.js') }}"></script>
+  <script src="{{ asset('sneaky/vendors/bootstrap/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('sneaky/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('sneaky/vendors/nice-select/jquery.nice-select.min.js') }}"></script>
+  <script src="{{ asset('sneaky/vendors/Magnific-Popup/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('sneaky/assets/js/jquery.ajaxchimp.min.js') }}"></script>
+  <script src="{{ asset('sneaky/assets/js/mail-script.js') }}"></script>
+  <script src="{{ asset('sneaky/assets/js/main.js') }}"></script>
+
+  @yield('script')
 </body>
 </html>

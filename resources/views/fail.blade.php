@@ -7,14 +7,13 @@
         <div class="col-lg-12 text-center" style="margin:auto;">
             <div class="row" style="margin-top:-91px;">
                 <div class="col-lg-12">
-                    <h2> Payment Successful </h2>
-                    <p>We are delighted to inform you that we received your payments</p>
+                    <h2> Payment Unuccessful </h2>
+                    <p>Sorry, We aren't able to process your payments. Please try again.</p>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-lg-12">
-                    <a href="#" class="btn btn-primary">View Orders</a><br><br>
-                    <a href="/" class="">Continue Shopping</a>
+                    <a href="/cart" class="">Return</a>
                 </div>
             </div>
         </div>
