@@ -13,7 +13,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-lg-12">
-                    <a href="/cart" class="">Return</a>
+                    <a href="/cart" class="btn btn-primary">Return</a><br><br>
                 </div>
             </div>
         </div>

@@ -40,4 +40,9 @@ class PaymentController extends Controller
     {
         return view('success');
     }
+
+    public function displayFailPage()
+    {
+        return view('fail');
+    }
 }
