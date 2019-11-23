@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Package\CreatePackageRequest;
+use App\Http\Requests\Package\UpdatePackageRequest;
+use App\Http\Requests\Package\DeletePackageRequest;
 use App\Package;
 use Session;
 use Image;
@@ -80,9 +82,10 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Package $package)
     {
-        //
+        return view('manage.package.show')
+                ->withPackage($package);
     }
 
     /**
@@ -91,9 +94,10 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Package $package)
     {
-        //
+        return view('manage.package.edit')
+                ->withPackage($package);
     }
 
     /**
@@ -103,9 +107,13 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePackageRequest $request, Package $package)
     {
-        //
+        $package->update($request->all());
+
+        Session::flash('success', Sprintf('%s has been updated', $package->name));
+
+        return redirect()->route('package:show', $package->id);
     }
 
     /**
@@ -114,8 +122,22 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeletePackageRequest $request, Package $package)
     {
-        //
+
+        $oldImage = $package->image;
+        if ($oldImage) {
+            if (file_exists(public_path('media/images/' . $oldImage))) {
+                unlink('media/images/' . $oldImage);
+            }
+            if (file_exists(public_path('media/thumb/' . $oldImage))) {
+                unlink('media/thumb/' . $oldImage);
+            }
+        }
+        $package->delete();
+
+        Session::flash('success', Sprintf('%s has been deleted', $package->name));
+
+        return redirect()->route('package:index');
     }
 }

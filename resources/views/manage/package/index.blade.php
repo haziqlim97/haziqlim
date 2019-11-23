@@ -47,13 +47,16 @@
                                     Package Name
                                 </th>
                                 <th>
-                                    Content
+                                    Description
                                 </th>
                                 <th>
                                     Price
                                 </th>
                                 <th>
                                     Date Created
+                                </th>
+                                <th>
+                                    Last Updated
                                 </th>
                                 <th class="text-right">
                                     Action
@@ -70,13 +73,16 @@
                                             {{ $package->name }}
                                         </td>
                                         <td>
-                                            {{ $package->content }}
+                                            {{ $package->description }}
                                         </td>
                                         <td>
                                             RM {{ $package->price }}
                                         </td>
                                         <td>
                                             {{ $package->created_at->format('F d, Y') }}
+                                        </td>
+                                        <td>
+                                            {{ $package->updated_at->format('F d, Y - h:i a') }}
                                         </td>
                                         <td class="text-right">
                                             <a href="{{ route('package:show', $package->id) }}"  class="btn btn-primary btn-round">view</a>

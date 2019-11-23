@@ -52,10 +52,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
         Route::group(['prefix' => 'package', 'as' => 'package:'], function() {
             Route::get('index', 'PackageController@index')->name('index');
             Route::get('create', 'PackageController@create')->name('create');
-            Route::get('show', 'PackageController@show')->name('show');
-            Route::post('edit', 'PackageController@edit')->name('edit');
+            Route::get('{package}/show', 'PackageController@show')->name('show');
+            Route::get('{package}/edit', 'PackageController@edit')->name('edit');
 
             Route::post('store', 'PackageController@store')->name('store');
+            Route::put('{package}/update', 'PackageController@update')->name('update');
+            Route::delete('{package}/destroy', 'PackageController@destroy')->name('destroy');
         });
     });
     
