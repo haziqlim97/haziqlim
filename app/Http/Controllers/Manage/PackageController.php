@@ -73,7 +73,7 @@ class PackageController extends Controller
             Session::flash('success', Sprintf('%s has been created', $request->get('name')));
         }
 
-        return redirect()->route('package:create');
+        return redirect()->route('manage:package:create');
     }
 
     /**
