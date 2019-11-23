@@ -55,13 +55,6 @@
     </script>
 
     @include('notification')
-
-    <script>
-        //@if(Session::has('success'))
-              notification.show('top','center');
-        //@endif
-    </script>
-    
      
 </body>
 

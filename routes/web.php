@@ -16,35 +16,26 @@ Route::get('/', function () {
 });
 
 Route::get('/test', 'CartController@test');
-
-
 Route::get('/pay', 'PaymentController@makePayment');
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/package', 'Manage\PackageController@all')->name('package:all');
 
 // Manage Cart
-Route::group(['prefix' => 'cart', 'as' => 'cart:'], function() {
-    // Route::get('index', 'PermissionController@index')->name('index');
+Route::group(['prefix' => 'cart', 'as' => 'cart:', 'middleware' => ['CanUseCart']], function() {
+    Route::get('/', 'CartController@index')->name('cart');
 
     Route::post('{package}', 'CartController@store')->name('add');
     Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
 });
 
 // Payment
-Route::group(['prefix' => 'payment', 'as' => 'payment:'], function() {
+Route::group(['prefix' => 'payment', 'as' => 'payment:', 'middleware' => ['CanUseCart']], function() {
     // Route::get('checkout', 'PaymentController@makePayment')->name('checkout');
 
     Route::get('success', 'PaymentController@displaySuccessPage')->name('success');
 });
-
-
-
-Route::get('/cart','CartController@index')->name('cart');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Manage'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

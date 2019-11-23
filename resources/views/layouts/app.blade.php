@@ -77,5 +77,13 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('paper-dashboard/assets/js/core/jquery.min.js')}}"></script>
+    <script src="{{ asset('paper-dashboard/assets/js/core/bootstrap.min.js')}}"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('paper-dashboard/assets/js/plugins/bootstrap-notify.js')}}"></script>
+
+    @include('notification')
 </body>
 </html>
