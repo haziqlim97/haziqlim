@@ -40,6 +40,8 @@ class StripeService extends BaseService
             'cancel_url' => env('APP_URL').'/payment/cancel',
             ]);
 
+        \Log::info($session);
+
         return $session;
     }
 
@@ -87,8 +89,6 @@ class StripeService extends BaseService
 
     public function generatePaymentReceipt($StripeRequest)
     {
-        \Log::info(Order::all())->toJson();
-        \Log::info($order = Order::where('stripeSessionId', $StripeRequest->id)->get()->toJson());
         \Log::info($StripeRequest);
 
         DB::transaction(function () use ($StripeRequest) {
