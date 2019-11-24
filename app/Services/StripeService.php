@@ -59,10 +59,12 @@ class StripeService extends BaseService
             );
         } catch(\UnexpectedValueException $e) {
             // Invalid payload
+            \Log::info('invalid payload');
             http_response_code(400);
             exit();
         } catch(\Stripe\Exception\SignatureVerificationException $e) {
             // Invalid signature
+            \Log::info('invalid signature');
             http_response_code(400);
             exit();
         }
