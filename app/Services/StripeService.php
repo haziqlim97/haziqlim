@@ -44,7 +44,9 @@ class StripeService extends BaseService
     }
 
     public function onCheckoutSessionCompleted()
-    {
+    {   
+        \Log::info('inside');
+
         $payload = @file_get_contents('php://input');
         $sig_header = request()->header('HTTP_STRIPE_SIGNATURE');
         $event = null;
