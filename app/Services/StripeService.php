@@ -48,7 +48,7 @@ class StripeService extends BaseService
         \Log::info('inside');
 
         $payload = @file_get_contents('php://input');
-        $sig_header = $request->server('HTTP_STRIPE_SIGNATURE');
+        $sig_header = request()->server('HTTP_STRIPE_SIGNATURE');
         //request()->header('HTTP_STRIPE_SIGNATURE');
         $event = null;
 
