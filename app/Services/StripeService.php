@@ -5,8 +5,10 @@ namespace App\Services;
 use App\Services\BaseService;
 use App\User;
 use App\Sale;
+use App\Order;
 use Carbon\Carbon;
 use Cart;
+use DB;
 
 class StripeService extends BaseService 
 {
@@ -48,26 +50,25 @@ class StripeService extends BaseService
         $event = null;
 
         try {
-        $event = \Stripe\Webhook::constructEvent(
-            $payload, $sig_header, $this->webhookSecret
-        );
+            $event = \Stripe\Webhook::constructEvent(
+                $payload, $sig_header, $this->webhookSecret
+            );
         } catch(\UnexpectedValueException $e) {
-        // Invalid payload
-        http_response_code(400);
-        exit();
+            // Invalid payload
+            http_response_code(400);
+            exit();
         } catch(\Stripe\Exception\SignatureVerificationException $e) {
-        // Invalid signature
-        http_response_code(400);
-        exit();
+            // Invalid signature
+            http_response_code(400);
+            exit();
         }
 
         // Handle the checkout.session.completed event
         if ($event->type == 'checkout.session.completed') {
-        $session = $event->data->object;
+            $session = $event->data->object;
 
-        // Fulfill the purchase...
-        $this->generatePaymentReceipt($session);
-            
+            // Fulfill the purchase...
+            $this->generatePaymentReceipt($session);
         }
 
         http_response_code(200);
@@ -77,16 +78,27 @@ class StripeService extends BaseService
 
     public function generatePaymentReceipt($StripeRequest)
     {
-        Sale::create([
-            'user_id' => 1,
-            'payment_id' => $StripeRequest->payment_intent,
-            'receiptNumber' => Carbon::now()->timestamp,
-            'items' => json_encode($StripeRequest->display_items),
-            'tax'   => 0,
-            'subTotal'  => 0,
-            'totalAmount' => 0,
-            'paid_at'   => now(),
-        ]);
+        DB::transaction(function () use ($content, $stripeSession) {
+            
+            Sale::create([
+                'user_id' => 1,
+                'payment_id' => $StripeRequest->payment_intent,
+                'receiptNumber' => Carbon::now()->timestamp,
+                'items' => json_encode($StripeRequest->display_items),
+                'tax'   => 0,
+                'subTotal'  => 0,
+                'totalAmount' => 0,
+                'paid_at'   => now(),
+            ]);
+
+            $order::where('stripeSessiondId', $StripeRequest->id)->first();
+
+            $order->update([
+                'paymentStatus' => 'Paid'
+            ]);
+
+            return true;
+        });
 
         return true;
     }

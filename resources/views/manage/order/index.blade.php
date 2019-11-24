@@ -31,7 +31,6 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('manage:package:create') }}" class="btn btn-primary pull-right">Create New Package</a>
                     <h4 class="card-title"> 
                         List of Order 
                     </h4>
@@ -48,7 +47,13 @@
                                     Items
                                 </th>
                                 <th>
-                                    Status
+                                    Request Date
+                                </th>
+                                <th>
+                                    Payment Status
+                                </th>
+                                <th>
+                                    Order Status
                                 </th>
                                 <th class="text-right">
                                     Action
@@ -62,12 +67,34 @@
                                             {{ $key+1 }}
                                         </td>
                                         <td>
+                                            <ul>
                                             @foreach ($order->items as $item)
-                                                {{ json_decode($item->item)->name }}
+                                                <li>{{ json_decode($item->item)->name }} x {{ json_decode($item->item)->quantity }}</li>
                                             @endforeach
+                                            <ul>
                                         </td>
                                         <td>
-                                            {{ $order->status }}
+                                            {{ $order->created_at->format('F d, Y') }}
+                                        </td>
+                                        <td align="center">
+                                            <span class="badge badge-info p-1">{{ $order->paymentStatus }}</span>
+                                        </td>
+                                        <td align="center">
+                                            @switch($order->orderStatus)
+                                                @case('Pending Approval')
+                                                    <span class="badge badge-info p-1"> {{ $order->orderStatus }} </span>
+                                                    @break
+
+                                                @case('Approved')
+                                                    <span class="badge badge-success p-1"> {{ $order->orderStatus }} </span>
+                                                    @break
+                                                
+                                                @case('Completed') 
+                                                    <span class="badge badge-primary p-1"> {{ $order->orderStatus }} </span>
+                                                    @break
+                                                @default
+                                                    <span>Something went wrong, please try again</span>
+                                            @endswitch
                                         </td>
                                         <td class="text-right">
                                             <a href="{{ route('manage:order:show', $order->id) }}"  class="btn btn-primary btn-round">view</a>
@@ -77,6 +104,8 @@
 
                             </tbody>
                         </table>
+
+                        {{ $orders->links() }}
                         
                     </div>
                 </div>

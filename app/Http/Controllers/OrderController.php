@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Cart;
 use DB;
 use Session;
+use Carbon\Carbon;
 use App\Package;
 use App\Order;
 use App\OrderItem;
@@ -43,9 +44,26 @@ class OrderController extends Controller
             return redirect()->route('order:list');
         }
 
-        DB::transaction(function () use ($content) {
+        $items = [];
+        foreach ($content as $item) {
+            $items[] = [
+                'name'          => $item->name,
+                'description'   => '-',
+                'images'        => [env('APP_URL').'/media/thumbnails/'.$item->image],
+                'amount'        => $item->price . '00',
+                'currency'      => 'myr',
+                'quantity'      => $item->quantity,
+            ];
+        }
+
+        $stripeSession = app('StripeService')->oneTimePayment($items);
+
+        DB::transaction(function () use ($content, $stripeSession) {
             $order = Order::create([
-                'status' => 'pending'
+                'paymentStatus'             => 'Pending',
+                'orderStatus'               => 'Pending Approval',
+                'stripeSessionId'           => $stripeSession->id,
+                'stripeSessionIdExpiry_at'  => Carbon::now()->addHours(24),
             ]);
 
             foreach ($content as $item) {
@@ -59,21 +77,6 @@ class OrderController extends Controller
         });
 
         app('CartService')->clear();
-
-        $items = [];
-
-        foreach ($content as $item) {
-            $items[] = [
-                'name'          => $item->name,
-                'description'   => '-',
-                'images'        => [env('APP_URL').'/media/thumbnails/'.$item->image],
-                'amount'        => $item->price . '00',
-                'currency'      => 'myr',
-                'quantity'      => $item->quantity,
-            ];
-        }
-
-        $stripeSession = app('StripeService')->oneTimePayment($items);
 
         return view('checkout')
                 ->withSession($stripeSession);

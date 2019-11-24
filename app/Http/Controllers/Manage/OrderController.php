@@ -16,8 +16,15 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $orders = Order::all();
+        $orders = Order::paginate(8);
 
         return view('manage.order.index')->withOrders($orders);
+    }
+
+    public function approve(Order $order)
+    {
+        $order->update([
+            'orderStatus'   => 'Approved'
+        ]);
     }
 }

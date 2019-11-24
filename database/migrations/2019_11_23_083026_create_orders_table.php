@@ -15,7 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('status');
+            $table->string('paymentStatus');
+            $table->string('orderStatus');
+            $table->string('stripeSessionId');
+            $table->dateTime('stripeSessionIdExpiry_at');
             $table->timestamps();
         });
     }
