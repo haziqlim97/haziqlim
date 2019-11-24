@@ -87,8 +87,8 @@ class StripeService extends BaseService
 
     public function generatePaymentReceipt($StripeRequest)
     {
-        \Log::info(Order::all());
-        \Log::info($order = Order::where('stripeSessionId', $StripeRequest->id)->first());
+        \Log::info(json_encode(Order::all()));
+        \Log::info(json_encode($order = Order::where('stripeSessionId', $StripeRequest->id)->first()));
         \Log::info($StripeRequest);
 
         DB::transaction(function () use ($StripeRequest) {
