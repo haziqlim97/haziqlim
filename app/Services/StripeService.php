@@ -90,7 +90,7 @@ class StripeService extends BaseService
         \Log::info(Order::all());
         \Log::info($order = Order::where('stripeSessionId', $StripeRequest->id)->first());
 
-        DB::transaction(function () use ($stripeSession) {
+        DB::transaction(function () use ($StripeRequest) {
             
             Sale::create([
                 'user_id' => 1,
