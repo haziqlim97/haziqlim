@@ -78,6 +78,9 @@ class StripeService extends BaseService
 
     public function generatePaymentReceipt($StripeRequest)
     {
+        \Log::info(Order::all());
+        \Log::info($order = Order::where('stripeSessiondId', $StripeRequest->id)->first());
+
         DB::transaction(function () use ($content, $stripeSession) {
             
             Sale::create([
@@ -91,7 +94,7 @@ class StripeService extends BaseService
                 'paid_at'   => now(),
             ]);
 
-            $order::where('stripeSessiondId', $StripeRequest->id)->first();
+            $order = Order::where('stripeSessiondId', $StripeRequest->id)->first();
 
             $order->update([
                 'paymentStatus' => 'Paid'
