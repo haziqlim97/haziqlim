@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Package extends Model
 {
@@ -25,4 +26,9 @@ class Package extends Model
     protected $dates = [
         'created_at',
     ];
+
+    public function getShortDescriptionAttribute()
+    {
+        return Str::limit($this->description, 30, ' ...');
+    }
 }

@@ -73,7 +73,7 @@
                                             {{ $package->name }}
                                         </td>
                                         <td>
-                                            {{ $package->description }}
+                                            {{ $package->short_description }}
                                         </td>
                                         <td>
                                             RM {{ $package->price }}

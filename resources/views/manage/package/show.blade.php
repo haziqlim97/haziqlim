@@ -9,45 +9,49 @@
                 <p class="card-category"> Full Package details </p>
             </div>
             <div class="card-body">
-                <table class="table">
+                <table class="table table-responsive-md custom-table">
                     <tbody>
                         <tr>
-                            <td>
+                            <td class="column-title">
                                 Package Name
                             <td>
-                            <td>
+                            <td class="column-content">
                                 <a href="#" class="nav-link"><b>{{ $package->name }}</b></a>
                             <td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="column-title">
                                 Description
                             <td>
-                            <td>
-                                <a href="#" class="nav-link"><b>{{ $package->description }}</b></a>
+                            <td class="column-content">
+                                <a href="#" class="nav-link">
+                                    <b>{{ $package->description }}</b>
+                                </a>
                             <td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="column-title">
                                 Content
                             <td>
-                            <td>
-                                <a href="#" class="nav-link"><b>{{ $package->content }}</b></a>
+                            <td class="column-content">
+                                <a href="#" class="nav-link">
+                                    <b>{{ $package->content }}</b>
+                                </a>
                             <td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="column-title">
                                 Price
                             <td>
-                            <td>
+                            <td class="column-content">
                                 <a href="#" class="nav-link"><b>RM {{ $package->price }}</b></a>
                             <td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="column-title">
                                 Created at
                             <td>
-                            <td>
+                            <td class="column-content">
                                 <a href="#" class="nav-link"><b>{{ $package->created_at->format('F d, Y') }}</b></a>
                             <td>
                         </tr>

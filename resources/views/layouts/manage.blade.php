@@ -18,6 +18,25 @@
   <link href="{{ asset('paper-dashboard/assets/css/paper-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <!-- <link href="paper-dashboard/assets/demo/demo.css" rel="stylesheet" /> -->
+
+    <style>
+    .custom-table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    .custom-table td {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+    }
+
+    /* Column widths are based on these cells */
+    .column-title {
+        width: 20%;
+    }
+    .column-content {
+        width: 80%;
+    }
+    </style>
 </head>
 <body class="">
     <div class="wrapper ">
