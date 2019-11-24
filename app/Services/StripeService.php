@@ -40,22 +40,15 @@ class StripeService extends BaseService
             'cancel_url' => env('APP_URL').'/payment/cancel',
             ]);
 
-        \Log::info($session);
-
         return $session;
     }
 
     public function onCheckoutSessionCompleted()
     {   
-        \Log::info('inside');
-
         $payload = @file_get_contents('php://input');
         $sig_header = request()->server('HTTP_STRIPE_SIGNATURE');
         //request()->header('HTTP_STRIPE_SIGNATURE');
         $event = null;
-
-        \Log::info('incomplete');
-        \Log::info(request()->header('HTTP_STRIPE_SIGNATURE'));
 
         try {
             $event = \Stripe\Webhook::constructEvent(
@@ -89,8 +82,6 @@ class StripeService extends BaseService
 
     public function generatePaymentReceipt($StripeRequest)
     {
-        \Log::info($StripeRequest);
-
         DB::transaction(function () use ($StripeRequest) {
             
             Sale::create([

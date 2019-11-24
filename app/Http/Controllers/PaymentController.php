@@ -26,8 +26,6 @@ class PaymentController extends Controller
 
         $stripeSession = app('StripeService')->oneTimePayment($items);
 
-        \Log::info($stripeSession);
-
         return view('checkout')->withSession($stripeSession);
     }
 
