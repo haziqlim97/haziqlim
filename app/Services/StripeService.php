@@ -51,6 +51,8 @@ class StripeService extends BaseService
         $sig_header = request()->header('HTTP_STRIPE_SIGNATURE');
         $event = null;
 
+        \Log::info('incomplete');
+
         try {
             $event = \Stripe\Webhook::constructEvent(
                 $payload, $sig_header, $this->webhookSecret
@@ -64,10 +66,11 @@ class StripeService extends BaseService
             http_response_code(400);
             exit();
         }
-
+        \Log::info('almost');
         // Handle the checkout.session.completed event
         if ($event->type == 'checkout.session.completed') {
             $session = $event->data->object;
+            \Log::info('complete');
 
             // Fulfill the purchase...
             $this->generatePaymentReceipt($session);
