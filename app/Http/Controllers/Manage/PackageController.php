@@ -73,7 +73,7 @@ class PackageController extends Controller
             Session::flash('success', Sprintf('%s has been created', $request->get('name')));
         }
 
-        return redirect()->route('manage:package:create');
+        return redirect()->route('manage:package:index');
     }
 
     /**
@@ -113,7 +113,7 @@ class PackageController extends Controller
 
         Session::flash('success', Sprintf('%s has been updated', $package->name));
 
-        return redirect()->route('package:show', $package->id);
+        return redirect()->route('manage:package:show', $package->id);
     }
 
     /**
@@ -138,6 +138,6 @@ class PackageController extends Controller
 
         Session::flash('success', Sprintf('%s has been deleted', $package->name));
 
-        return redirect()->route('package:index');
+        return redirect()->route('manage:package:index');
     }
 }
