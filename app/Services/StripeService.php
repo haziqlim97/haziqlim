@@ -103,7 +103,7 @@ class StripeService extends BaseService
                 'paid_at'   => now(),
             ]);
 
-            $order = Order::where('stripeSessiondId', $StripeRequest->id)->first();
+            $order = Order::where('stripeSessionId', $StripeRequest->id)->first();
 
             $order->update([
                 'paymentStatus' => 'Paid'
